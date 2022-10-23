@@ -1,0 +1,46 @@
+body {
+    background: #FFFAFA !important;
+}
+
+.diagram img {
+    display: block;
+    margin: auto;
+}
+
+.input-group-text {
+    background-color: rgba(217, 59, 31, 0.8) !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
+.simple-img {
+    background-image: url("../img/fresas-template.png");
+}
+
+.water-img {
+    background-image: url("../img/fresas-agua.png");
+}
+
+@media (max-width: 800px) {
+    .diagram img {
+        width: 600px;
+    }
+}
+
+@media (max-width: 600px) {
+    .diagram img {
+        width: 550px;
+    }
+}
+
+@media (max-width: 500px) {
+    .diagram img {
+        width: 400px;
+    }
+}
+
+@media (max-width: 400px) {
+    .diagram img {
+        width: 300px;
+    }
+}

@@ -1,15 +1,12 @@
 #include "DHT.h"
 
-#define DHTPIN 2
+#define DHTPIN 4
 #define DHTTYPE DHT11
 
 DHT dht(DHTPIN, DHTTYPE);
 
 // Floor sensor
 const int HLPIN = A0;
-
-//Sensors data
-String request;
 
 void setup() {
   Serial.begin(9600);
@@ -18,27 +15,16 @@ void setup() {
 }
 
 void loop() {
-  readDHTSensor();
-  readHLSensor();
-}
-
-void readDHTSensor() {
   delay(2000);
 
   float relativeHumitity = dht.readHumidity();
   float temperature = dht.readTemperature();
+  float hic = 0;
 
   if (!isnan(relativeHumitity) || !isnan(temperature)) {
-    float hic = dht.computeHeatIndex(temperature, relativeHumitity, false);    
-    Serial.print(String("relative_humidity:") + relativeHumitity + String(",temperature:") + temperature + String(",heat_index:") + hic);
-    Serial.print('\n'); 
-  } else {    
-    Serial.print(String("DHT_ERROR"));
-    Serial.print('\n');
+    hic = dht.computeHeatIndex(temperature, relativeHumitity, false);
   }
-}
 
-void readHLSensor() {
   bool isOn = false;
   int hlSensorValue = analogRead(HLPIN);
 
@@ -49,7 +35,6 @@ void readHLSensor() {
     isOn = false;
   }
 
-  delay(1000);
-  Serial.print(String("hl_sensor:") + hlSensorValue + String(",auto_watering:") + isOn);
-  Serial.print('\n');
+  delay(500);
+  Serial.print(String("hl_sensor:") + hlSensorValue + String(",relative_humidity:") + relativeHumitity + String(",auto_watering:") + isOn + String(",temperature:") + temperature + String(",heat_index:") + hic);
 }

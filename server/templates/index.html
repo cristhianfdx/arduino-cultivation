@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <title>Cultivo de Fresas</title>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h1 class="h1 text-center">Cultivo de Fresas</h1>
+
+        <div class="diagram mt-5">
+            <div id="img">
+                <img alt="Fresas">
+            </div>
+
+            <div class="row g-3 mt-3 text-center">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <span class="input-group-text">Humedad del suelo</span>
+                        <input type="text" class="form-control" id="hl_sensor" disabled>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <span class="input-group-text">Humedad relativa</span>
+                        <input type="text" class="form-control" id="relative_humidity" disabled>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <span class="input-group-text">Temperatura</span>
+                        <input type="text" class="form-control" id="temperature" disabled>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <span class="input-group-text">Sensación térmica</span>
+                        <input type="text" class="form-control" id="heat_index" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5" id="table">
+            <h2 class="h2 text-center">Registro de Alertas</h2>
+            <table class="table table-striped table-hover table-bordered mt-5">
+                <thead class="table-dark">
+                    <th>Descripción</th>
+                    <th>Variable</th>
+                    <th>Valor</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                </thead>
+                <tbody id="data"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static',filename='js/index.js') }}"></script>
+</body>
+
+</html>

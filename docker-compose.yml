@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  db:
+    image: postgres:10-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - "/var/lib/postgresql/data"
+      - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
+    environment:
+      - POSTGRES_PASSWORD=PPTMgvGsQ7OXo231lwaZ
+      - POSTGRES_USER=DG7fuOwAk21
+      - POSTGRES_DB=strawberry_cultivation
